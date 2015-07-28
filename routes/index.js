@@ -7,10 +7,21 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz LF' });
 });
 
+/* Version REST
 router.get('/quizes/question',quizController.question);
 router.get('/quizes/answer',quizController.answer);
+*/
+
+// Version Modelo
+// Definición de rutas de /quizes
+router.get('/quizes',quizController.index);
+router.get('/quizes/:quizId(\\d+)',quizController.show);
+router.get('/quizes/:quizId(\\d+)/answer',quizController.answer);
+
+// Autor
 router.get('/author', function(req, res){
   res.render('author');
 });
+
 
 module.exports = router;
