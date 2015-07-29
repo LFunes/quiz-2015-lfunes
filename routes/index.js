@@ -12,6 +12,9 @@ router.get('/quizes/question',quizController.question);
 router.get('/quizes/answer',quizController.answer);
 */
 
+// Autoload de comandos :quizId
+router.param('quizId', quizController.load); // Autoload :quizId
+
 // Version Modelo
 // Definición de rutas de /quizes
 router.get('/quizes',quizController.index);
