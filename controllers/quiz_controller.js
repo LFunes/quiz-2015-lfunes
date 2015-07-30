@@ -73,7 +73,7 @@ exports.create = function (req, res) {
 
   quiz
   .validate()
-  .then{
+  .then(
     function(err){
       if(err){
         res.render('quizes/new', {quiz: quiz, errors: err.errors});
@@ -85,5 +85,5 @@ exports.create = function (req, res) {
         // Redireccion al listado de preguntas
       }
     }
-  }:
+  );
 };
