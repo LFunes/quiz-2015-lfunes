@@ -67,7 +67,7 @@ exports.new = function (req, res) {
   res.render('quizes/new',{quiz:quiz, errors: []});
 };
 
-// GET /quizes/create
+// POST /quizes/create
 exports.create = function (req, res) {
   var quiz = models.Quiz.build (req.body.quiz);
 
@@ -76,12 +76,42 @@ exports.create = function (req, res) {
   .then(
     function(err){
       if(err){
-        console.log('Existe error');
+        // console.log('Existe error');
         res.render('quizes/new', {quiz: quiz, errors: err.errors});
+      }else{
+        // console.log('Insercion en DB');
+        // Guarda en DB los campos pregunta y respuesta de quiz
+        quiz
+        .save({fields: ["pregunta","respuesta"]})
+        .then(function(){res.redirect('/quizes')});
+        // Redireccion al listado de preguntas
+      }
+    }
+  );
+};
+
+// GET /quizes/:id/edit
+exports.edit = function(req, res){
+  var quiz = req.quiz; // Autoload de la pregunta recibida
+  res.render('quizes/edit', {quiz:quiz, errors: []});
+};
+
+// PUT /quizes/:id
+exports.update = function(res, res){
+  req.quiz.pregunta = req.body.quiz.pregunta;
+  req.quiz.respuesta = req.body.quiz.respuesta;
+
+  req.quiz
+  .validate()
+  .then(
+    function(err){
+      if(err){
+        console.log('Existe error');
+        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
       }else{
         console.log('Insercion en DB');
         // Guarda en DB los campos pregunta y respuesta de quiz
-        quiz
+        req.quiz
         .save({fields: ["pregunta","respuesta"]})
         .then(function(){res.redirect('/quizes')});
         // Redireccion al listado de preguntas
