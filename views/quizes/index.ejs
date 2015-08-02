@@ -1,7 +1,6 @@
 <table>
 <% var i; for(i=0; i < quizes.length; i++){ %>
   <tr>
-    <td>Temática: <%= quizes[i].tema %></td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
     <td>
@@ -9,6 +8,7 @@
         <button type="submit" onClick="return confirm('Borrar <%= quizes[i].pregunta %>');">Borrar</button>
       </form>
     </td>
+    <td>Pregunta de temática: <%= quizes[i].tema %></td>
   </tr>
 <% } %>
 </table>
