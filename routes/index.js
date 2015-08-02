@@ -28,7 +28,7 @@ router.delete('/quizes/:quizId(\\d+)',quizController.destroy);
 
 // Autor
 router.get('/author', function(req, res){
-  res.render('author');
+  res.render('author',{errors: []});
 });
 
 
