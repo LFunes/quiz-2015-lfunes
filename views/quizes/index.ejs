@@ -1,6 +1,16 @@
 <table>
 <% var i; for(i=0; i < quizes.length; i++){ %>
   <tr>
+    <td>
+    <select name="tema">
+    <%
+      var temas = new Array('otro','humanidades','ocio','ciencia','tecnologia');
+      var cont;
+      for(cont=0; i < temas.length; cont++){
+    %>
+      <option value="<%= temas[cont] %>"><%= temas[cont] %></option>
+    <%  } %>
+    </td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
     <td>
