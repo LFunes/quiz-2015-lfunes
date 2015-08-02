@@ -100,6 +100,7 @@ exports.edit = function(req, res){
 exports.update = function(req, res){
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
+  req.quiz.tema = req.body.quiz.tema;
 
   req.quiz
   .validate()
@@ -112,7 +113,7 @@ exports.update = function(req, res){
         console.log('Insercion en DB');
         // Guarda en DB los campos pregunta y respuesta de quiz
         req.quiz
-        .save({fields: ["pregunta","respuesta"]})
+        .save({fields: ["pregunta","respuesta","tema"]})
         .then(function(){res.redirect('/quizes')});
         // Redireccion al listado de preguntas
       }
