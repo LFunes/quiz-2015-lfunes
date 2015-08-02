@@ -2,16 +2,13 @@
 <% var i; for(i=0; i < quizes.length; i++){ %>
   <tr>
     <td>
-      <select name="tema">
-    <%
-      var selected = '';
-      var temas = new Array('otro','humanidades','ocio','ciencia','tecnologia');
-      for(var cont=0; i < temas.length; cont++){
-        console.log(temas[cont]);
-        }
-    %>
-      <option value="option" >option</option>
-      </select>
+    <select name="tema">
+      <option value="otro" selected>Otro</option>
+      <option value="humanidades">Humanidades</option>
+      <option value="ocio">Ocio</option>
+      <option value="ciencia">Ciencia</option>
+      <option value="tecnologia">Tecnología</option>
+    </select>
     </td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
