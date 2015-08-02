@@ -3,14 +3,6 @@
   <tr>
     <td>
     <select name="tema">
-<<<<<<< HEAD
-      <option value="otro" selected>Otro</option>
-      <option value="humanidades">Humanidades</option>
-      <option value="ocio">Ocio</option>
-      <option value="ciencia">Ciencia</option>
-      <option value="tecnologia">Tecnología</option>
-    </select>
-=======
     <%
       var temas = new Array('otro','humanidades','ocio','ciencia','tecnologia');
       var cont;
@@ -18,7 +10,6 @@
     %>
       <option value="<%= temas[cont] %>"><%= temas[cont] %></option>
     <%  } %>
->>>>>>> parent of 4646c76... Indice temático (1.1)
     </td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
