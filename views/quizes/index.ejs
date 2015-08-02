@@ -2,15 +2,16 @@
 <% var i; for(i=0; i < quizes.length; i++){ %>
   <tr>
     <td>
-    <select name="tema">
+      <select name="tema">
     <%
       var selected = '';
       var temas = new Array('otro','humanidades','ocio','ciencia','tecnologia');
       for(var cont=0; i < temas.length; cont++){
-        selected = (temas[cont] === quizes[i].tema) ? 'selected' : '' ;
+        console.log(temas[cont]);
+        }
     %>
-      <option value="<%= temas[cont] %>" <%= selected %>><%= temas[cont] %></option>
-    <%  } %>
+      <option value="option" >option</option>
+      </select>
     </td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
