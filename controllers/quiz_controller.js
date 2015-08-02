@@ -82,7 +82,7 @@ exports.create = function (req, res) {
         // console.log('Insercion en DB');
         // Guarda en DB los campos pregunta y respuesta de quiz
         quiz
-        .save({fields: ["pregunta","respuesta"]})
+        .save({fields: ["pregunta","respuesta","tema"]})
         .then(function(){res.redirect('/quizes')});
         // Redireccion al listado de preguntas
       }
