@@ -1,7 +1,15 @@
 <table>
 <% var i; for(i=0; i < quizes.length; i++){ %>
   <tr>
-    <td>Temática: <% quizes[i].tema %></td>
+    <td>
+    <select name="tema">
+      <option value="otro" selected>Otro</option>
+      <option value="humanidades">Humanidades</option>
+      <option value="ocio">Ocio</option>
+      <option value="ciencia">Ciencia</option>
+      <option value="tecnologia">Tecnología</option>
+    </select>
+    </td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button type="button">Editar</button></a></td>
     <td>

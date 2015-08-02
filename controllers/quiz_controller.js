@@ -1,5 +1,4 @@
 var models = require('../models/models.js');
-var tematica = new Array ("otro", "humanidades", "ocio","ciencia", "tecnología"); 
 
 /*
 // GET /quizes/question
