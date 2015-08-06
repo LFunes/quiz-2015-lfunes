@@ -38,21 +38,30 @@ exports.load = function(req,res,next,quizId){
 // GET /quizes
 exports.index = function(req, res) {
 
-  var queryBuscar = '';
   var buscar = (req.query.search != '') ? trim(req.query.search) : '' ;
 
   if(buscar != ''){
-    var saneaBuscar = buscar.replace(' ','%');
-    queryBuscar = {where:['pregunta like ?', saneaBuscar]};
-  }
+    var saneaBuscar = trim(buscar);
+    saneaBuscar = saneaBuscar.replace(' ','%');
 
-  models.Quiz.findAll(queryBuscar)
-  .then(
-    function (quizes){
-      res.render('quizes/index', {quizes:quizes, errors: []});
-    }
-  )
-  .catch(function(error){next(error)});
+    // Búsqueda de preguntas
+    models.Quiz.findAll({where:['pregunta like ?', saneaBuscar]})
+    .then(
+      function (quizes){
+        res.render('quizes/index', {quizes:quizes, errors: []});
+      }
+    )
+    .catch(function(error){next(error)});
+  }else{
+    // Listado de preguntas
+    models.Quiz.findAll()
+    .then(
+      function (quizes){
+        res.render('quizes/index', {quizes:quizes, errors: []});
+      }
+    )
+    .catch(function(error){next(error)});
+  }
 };
 
 // GET /quizes/:id
