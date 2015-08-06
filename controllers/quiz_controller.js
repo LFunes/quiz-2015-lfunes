@@ -41,7 +41,7 @@ exports.index = function(req, res) {
   var buscar = (req.query.search != '') ? req.query.search : '' ;
 
   if(buscar != ''){
-    var saneaBuscar = trim(buscar);
+    var saneaBuscar = buscar;
     saneaBuscar = saneaBuscar.replace(' ','%');
 
     // Búsqueda de preguntas
