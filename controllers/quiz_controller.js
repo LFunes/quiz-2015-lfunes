@@ -43,7 +43,7 @@ exports.index = function(req, res) {
 
   if(buscar != ''){
     var saneaBuscar = buscar.replace(' ','%');
-    queryBuscar = {where:['lower(pregunta) like ?', saneaBuscar]});
+    queryBuscar = {where:['lower(pregunta) like ?', saneaBuscar]};
   }
 
   models.Quiz.findAll(queryBuscar)
