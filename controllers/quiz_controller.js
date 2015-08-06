@@ -38,7 +38,7 @@ exports.load = function(req,res,next,quizId){
 // GET /quizes
 exports.index = function(req, res) {
 
-  var buscar = (req.query.search != '') ? trim(req.query.search) : '' ;
+  var buscar = (req.query.search != '') ? req.query.search : '' ;
 
   if(buscar != ''){
     var saneaBuscar = trim(buscar);
