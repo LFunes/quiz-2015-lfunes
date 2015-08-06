@@ -39,11 +39,11 @@ exports.load = function(req,res,next,quizId){
 exports.index = function(req, res) {
 
   var queryBuscar = '';
-  var buscar = (req.query.search != '') ? trim.req.query.search : '' ;
+  var buscar = (req.query.search != '') ? trim(req.query.search) : '' ;
 
   if(buscar != ''){
     var saneaBuscar = buscar.replace(' ','%');
-    queryBuscar = {where:['lower(pregunta) like ?', saneaBuscar]};
+    queryBuscar = {where:['pregunta like ?', saneaBuscar]};
   }
 
   models.Quiz.findAll(queryBuscar)
