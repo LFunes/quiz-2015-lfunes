@@ -37,11 +37,22 @@ exports.load = function(req,res,next,quizId){
 // Nueva versión
 // GET /quizes
 exports.index = function(req, res) {
-  models.Quiz.findAll().then(
+
+  var queryBuscar = '';
+  var buscar = (req.query.search != '') ? trim.req.query.search : '' ;
+
+  if(buscar != ''){
+    var saneaBuscar = buscar.replace(' ','%');
+    queryBuscar = {where:['lower(pregunta) like ?', saneaBuscar]});
+  }
+
+  models.Quiz.findAll(queryBuscar)
+  .then(
     function (quizes){
       res.render('quizes/index', {quizes:quizes, errors: []});
     }
-  ).catch(function(error){next(error)});
+  )
+  .catch(function(error){next(error)});
 };
 
 // GET /quizes/:id
