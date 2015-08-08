@@ -127,10 +127,10 @@ exports.update = function(req, res){
   .then(
     function(err){
       if(err){
-        console.log('Existe error');
+        // console.log('Existe error');
         res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
       }else{
-        console.log('Insercion en DB');
+        // console.log('Insercion en DB');
         // Guarda en DB los campos pregunta y respuesta de quiz
         req.quiz
         .save({fields: ["pregunta","respuesta","tema"]})
