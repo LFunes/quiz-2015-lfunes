@@ -40,7 +40,7 @@ exports.index = function(req, res) {
 
   console.log('req.query.search => '+req.query.search);
 
-  if(req.query.search != ''){
+  if(req.query.search){
     console.log('Dentro de buscar');
     var saneaBuscar = req.query.search;
     saneaBuscar = saneaBuscar.replace(' ','%');
