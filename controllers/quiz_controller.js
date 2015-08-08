@@ -49,6 +49,7 @@ exports.index = function(req, res) {
     .then(
       function (quizes){
         if(quizes.rows <= 0){
+          console.log('Sin resultados');
           quizes = 'Sin resultados';
         }
         res.render('quizes/index', {quizes:quizes, errors: []});
