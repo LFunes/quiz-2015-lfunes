@@ -39,7 +39,7 @@ exports.load = function(req,res,next,quizId){
 exports.index = function(req, res) {
 
   if(req.query.search){
-    console.log('Dentro de buscar');
+    // console.log('Dentro de buscar');
     var saneaBuscar = req.query.search;
     saneaBuscar = saneaBuscar.toLowerCase().replace(' ','%');
     saneaBuscar = '%'+saneaBuscar+'%';
@@ -48,9 +48,6 @@ exports.index = function(req, res) {
     models.Quiz.findAll({where:['pregunta LIKE ?', saneaBuscar]})
     .then(
       function (quizes){
-        if(Quiz.count <= 0){
-          console.log('Sin resultados');
-        }
         res.render('quizes/index', {quizes:quizes, errors: []});
       }
     )
