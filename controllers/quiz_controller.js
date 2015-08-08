@@ -42,8 +42,8 @@ exports.index = function(req, res) {
 
   if(req.query.search){
     console.log('Dentro de buscar');
-    var saneaBuscar = strtolower(trim(req.query.search));
-    saneaBuscar = saneaBuscar.replace(' ','%');
+    var saneaBuscar = trim(req.query.search);
+    saneaBuscar = saneaBuscar.toLowerCase().replace(' ','%');
     saneaBuscar = '%'+saneaBuscar+'%';
 
     // Búsqueda de preguntas
