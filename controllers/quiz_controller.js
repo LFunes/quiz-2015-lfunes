@@ -42,8 +42,9 @@ exports.index = function(req, res) {
 
   if(req.query.search){
     console.log('Dentro de buscar');
-    var saneaBuscar = req.query.search;
+    var saneaBuscar = strtolower(trim(req.query.search));
     saneaBuscar = saneaBuscar.replace(' ','%');
+    saneaBuscar = '%'+saneaBuscar+'%';
 
     // Búsqueda de preguntas
     models.Quiz.findAll({where:['pregunta like ?', saneaBuscar]})
