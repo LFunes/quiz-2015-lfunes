@@ -45,9 +45,12 @@ exports.index = function(req, res) {
     saneaBuscar = '%'+saneaBuscar+'%';
 
     // Búsqueda de preguntas
-    models.Quiz.findAll({where:['pregunta like ?', saneaBuscar]})
+    models.Quiz.findAll({where:['pregunta LIKE ?', saneaBuscar]})
     .then(
       function (quizes){
+        if(quizes.rows <= 0){
+          quizes = 'Sin resultados';
+        }
         res.render('quizes/index', {quizes:quizes, errors: []});
       }
     )
