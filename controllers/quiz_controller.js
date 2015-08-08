@@ -42,7 +42,8 @@ exports.index = function(req, res) {
 
   if(req.query.search){
     console.log('Dentro de buscar');
-    var saneaBuscar = trim(req.query.search);
+    var saneaBuscar = req.query.search;
+    saneaBuscar = saneaBuscar.trim;
     saneaBuscar = saneaBuscar.toLowerCase().replace(' ','%');
     saneaBuscar = '%'+saneaBuscar+'%';
 
