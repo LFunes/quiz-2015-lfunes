@@ -48,9 +48,8 @@ exports.index = function(req, res) {
     models.Quiz.findAll({where:['pregunta LIKE ?', saneaBuscar]})
     .then(
       function (quizes){
-        if(quizes.count <= 0){
+        if(Quiz.count <= 0){
           console.log('Sin resultados');
-          quizes = 'Sin resultados';
         }
         res.render('quizes/index', {quizes:quizes, errors: []});
       }
