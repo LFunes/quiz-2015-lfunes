@@ -21,9 +21,13 @@ exports.answer = function(req, res) {
 */
 
 // Autoload - factoriza el código si ruta incluye :quizId
+// Se añade la carga automática de comentarios asociados al Quiz
 exports.load = function(req,res,next,quizId){
-  models.Quiz.find(quizId).then(
-    function(quiz){
+  models.Quiz.find({
+    where: { id: Number(quizId) },
+    include: [{ model: models.Comment }]
+  })
+  .then(function(quiz){
       if(quiz){
         req.quiz = quiz;
         next();
