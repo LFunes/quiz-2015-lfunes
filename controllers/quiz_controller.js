@@ -45,11 +45,14 @@ exports.index = function(req, res) {
   if(req.query.search){
     // console.log('Dentro de buscar');
     var saneaBuscar = req.query.search;
-    saneaBuscar = saneaBuscar.toLowerCase().replace(' ','%');
+    saneaBuscar = saneaBuscar.replace(' ','%');
     saneaBuscar = '%'+saneaBuscar+'%';
 
     // Búsqueda de preguntas
-    models.Quiz.findAll({where:['pregunta LIKE ?', saneaBuscar]})
+    models.Quiz.findAll({
+      where:['LOWER(pregunta) LIKE ?', saneaBuscar],
+      order: 'pregunta ASC'
+    })
     .then(
       function (quizes){
         res.render('quizes/index', {quizes:quizes, errors: []});
