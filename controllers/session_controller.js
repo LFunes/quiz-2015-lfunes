@@ -7,7 +7,7 @@ exports.new = function(req, res){
 };
 
 // POST /login -- Crear session
-exports.create = function(){
+exports.create = function(req, res){
   var login = req.body.login;
   var password = req.body.password;
 

@@ -6,3 +6,4 @@ section > div {padding:20px;}
 header, nav, section, footer {background: #eee; text-align: center;}
 nav span {margin: 0 10px 0 0;}
 #ErrorMsgs {color: red; font-size: small;}
+.right{float:right;}
