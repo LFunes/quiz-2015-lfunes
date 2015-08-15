@@ -28,6 +28,21 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//tiempo de sesion
+app.use(function(req, res, next) {
+
+  var time = (new Date()).getTime();
+  // console.log(time);
+
+  if(req.session.user){ // Solo en el caso de que exista sesion
+    if(time > req.session.user.expire){
+      delete req.session.user; // Se destruye la sesion del usuario
+    }
+  }
+
+  next();
+});
+
 // helpers dinamicos
 app.use(function(req, res, next){
   // Guardar path en session.redir para despues del login
