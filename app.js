@@ -32,14 +32,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
 
   var time = (new Date()).getTime();
-  // console.log(time);
-
+  var sessionTransaction = time + 120000; // Tiempo en que debe expirar la sesion
+  
   if(req.session.user){ // Solo en el caso de que exista sesion
-    if(time > req.session.user.expire){
+    // Destruye la sesion del usuario pasados
+    // 20minutos del login o +2minutos entre transacciones
+    if(time > req.session.expire || time > req.session.user.expire){
       delete req.session.user; // Se destruye la sesion del usuario
+    }else{
+      // Nueva transaccion nuevo tiempo de exiración entre transacciones
+      req.session.expire = sessionTransaction;
     }
   }
-
   next();
 });
 
