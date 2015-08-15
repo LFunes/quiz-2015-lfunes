@@ -9,7 +9,9 @@
 <p>
   <label for="tema">Temática</label>
   <select id="tema" name="quiz[tema]">
+    <% if (quiz.tema) { %>
     <option value="<%= quiz.tema %>" selected><%= quiz.tema %> </option>
+    <% } %>
     <option value="otro">Otro</option>
     <option value="humanidades">Humanidades</option>
     <option value="ocio">Ocio</option>
